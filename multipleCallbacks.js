@@ -1,6 +1,6 @@
 var users = {
-  1: {name: 'michael', favoriteDb: 'mongoDb', id: 1},
-  2: {name: 'eric', favoriteDb: 'mySql', id: 2}
+  1: {name: 'michael', favoriteDb: 'mongoDb'},
+  2: {name: 'eric', favoriteDb: 'mySql'}
 }
 
 var databases = {

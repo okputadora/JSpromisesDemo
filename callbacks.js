@@ -18,3 +18,4 @@ function fetchUser(id, callback) {
 fetchUser(1, function(user){
   console.log(user)
 })
+

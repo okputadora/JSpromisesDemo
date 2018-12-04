@@ -44,3 +44,6 @@ fetchUser(1)
 .then(function(db) {
   console.log(db)
 })
+.catch(function(err) {
+  console.log(err)
+})
