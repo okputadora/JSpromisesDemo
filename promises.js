@@ -16,7 +16,7 @@ function fetchUser(id) {
         resolve(users[id])
       } 
       else {
-        reject(null, 'that id did not exist')
+        reject(Error('that id did not exist'))
       }
     }, 1000)
   })
@@ -29,14 +29,14 @@ function fetchDbInfo(dbName) {
         resolve(databases[dbName])
       }
       else {
-        reject(null, 'error')
+        reject('error')
       }
     }, 1000)
   })
 }
 
 
-fetchUser(1)
+fetchUser(9)
 .then(function(user){
   console.log(user)
   return fetchDbInfo(user.favoriteDb)

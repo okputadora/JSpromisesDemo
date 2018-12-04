@@ -15,7 +15,8 @@ function fetchUser(id, callback) {
   }, 1000)
 }
 
-fetchUser(1, function(user){
+fetchUser(1, function(user, error){
+  if (error) console.log(error)
   console.log(user)
 })
 

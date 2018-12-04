@@ -4,7 +4,7 @@ var users = {
 }
 
 var databases = {
-  'mongoDb': {dbType: 'non-relational'},
+  // 'mongoDb': {dbType: 'non-relational'},
   'mySql': {dbType: 'relational'}
 }
 
@@ -31,9 +31,11 @@ function fetchDbInfo(dbName, callback) {
   }, 1000)
 }
 
-fetchUser(1, function(user){
+fetchUser(1, function(user, error){
+  if (error) console.log(error)
   console.log(user)
-  fetchDbInfo(user.favoriteDb, function(dbType){
+  fetchDbInfo(user.favoriteDb, function(dbType, error){
+    if (error) console.log(error)
     console.log(dbType)
     // fetchEvenMoreInfo(dbType, function(moreInfo) {
       

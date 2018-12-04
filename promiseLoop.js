@@ -29,3 +29,6 @@ Promise.all(usersArray.map(function(user){
 .then(function(results){
   console.log(results)
 })
+.catch(function(err){
+  console.log(err)
+})

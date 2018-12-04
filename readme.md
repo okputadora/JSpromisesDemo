@@ -5,6 +5,8 @@
 1. Solution 1: Callbacks
 1. Problems with callbacks
 1. Solution 2: Promises
+1. Promise Loops
+1. Resources
 
 ## 1. Intro
 When I was first learning about JavaScript Promises I kept finding reference to "[callback hell](http://callbackhell.com/)" and was told Promises can save us from this.
@@ -42,12 +44,12 @@ function getUser(id, callback) {
 ## 4. What are some problems with this? 
 ❓ Compare this function with the first one. What have we lost here? (Hint: look at the keywords)
 
-We've lost the ability to use `return` and `throw`. Who cares? Well since we've lost `return` and `throw` we've also lost our call stack. We've lost our place in the stack and are relying entirely on side effects (callbacks) for the execution of our code. When you use `return` and `throw` in synchronous functions, the code stops running. In other words, the code functions in a predictable manner. When we use callbacks on the otherhand, there could be code that runs after the callback, there's nothing stopping a callback from being executed twice...in short, there's no guarantees. 
+We've lost the ability to use `return` and `throw`. Who cares? Well since we've lost `return` and `throw` we've lost our place in the stack and are relying entirely on side effects (callbacks) for the execution of our code. When you use `return` and `throw` in synchronous functions, the code stops running (It doesn't continue on the code after it). In other words, the code functions in a predictable manner. When we use callbacks on the otherhand, there could be code that runs after the callback, there's nothing stopping a callback from being executed twice...in short, there's no guarantees. 
 
 So, in summary the problems we've created are...
 
   * Callback hell (fetching data that depends on previous data is hard)
-  * We can't use `return` or `throw` (who cares?)
+  * We can't use `return` or `throw` and we've lost our call stack.
 
 But also... 
   * Asynchronous loops can be hard  // IF we have time
@@ -105,8 +107,23 @@ the first thing to note is that we're using the Promise constructor to build a P
 
 N.B. resolve and reject can be named anything, however, I find the convention is to name them...resolve and reject. 
 
+## 6. 🤞🔁 Promise Loops
 
-## 6. Resources
+One of the biggest hangups for beginners is looping through promises. The reason this causes a hangup is because `.forEach()` or a for loop are not the right tools. The right tool is `Promis.all()`
+
+```javascript
+Promise.all(usersArray.map(function(user){ 
+  return fetchUser(user)
+}))
+.then(function(results){
+  console.log(results)
+})
+.catch(function(err){
+  console.log(err)
+})
+```
+
+## 7. 📖 Resources
 * https://www.youtube.com/watch?v=hf1T_AONQJU&feature=youtu.be
 
 * https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
