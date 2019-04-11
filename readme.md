@@ -1,4 +1,4 @@
-# JavaScript Promises Demo
+# JavaScript Promises
 
 1. Intro
 1. Why do we even have asynchronous JavaScript?
